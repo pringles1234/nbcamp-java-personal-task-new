@@ -1,17 +1,18 @@
 package calculator;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
 
-        int[] arr = new int[10]; //배열 생성
-        // int count = 0; 연산 결과 저장된 배열의 마지막 index 저장하는 변수
+        ArrayList<Integer> intList = new ArrayList<Integer>(); //리스트 생성
+        // int[] arr = new int[10]; 배열생성
+        // int count = 0; 연산 결과 저장된 배열의 마지막 index 저장하는 변수 -> 사용안함
 
         Scanner sc = new Scanner(System.in);
-        for(int i = 0; i < arr.length; i++) {
+        while(true) { // for문에서 while 문으로 수정 -> 무한루프
             System.out.println("첫 번째 숫자를 입력하세요: (종료하려면 exit 입력)");
             String input1 = sc.nextLine();
             if (input1.equals("exit")) {
@@ -55,9 +56,13 @@ public class App {
                 continue; // 다른 기호를 입력한 경우 배열에 저장하지 않고 넘어감
             }
             System.out.println("결과: " + result);
-            arr[i] = result;
+            //arr[i] = result;
+            intList.add(result);
 
-            System.out.println(Arrays.toString(arr));
+            if(intList.size() > 10){
+                intList.remove(0);
+            }
+            System.out.println(intList.toString());
         }
     }
 }
