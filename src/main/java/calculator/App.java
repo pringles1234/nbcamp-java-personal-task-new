@@ -51,18 +51,32 @@ public class App {
                 } else {
                     result = num1 / num2;
                 }
-            } else{ // 다른 기호를 입력하였을 경우
+            } else { // 다른 기호를 입력하였을 경우
                 System.out.println("모르는 기호입니다.");
                 continue; // 다른 기호를 입력한 경우 배열에 저장하지 않고 넘어감
             }
             System.out.println("결과: " + result);
             //arr[i] = result;
             intList.add(result);
-
-            if(intList.size() > 10){
-                intList.remove(0);
-            }
             System.out.println(intList.toString());
+
+            if (intList.size() >= 10){
+                System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제, enter 클릭 시 다시 계산)");
+                String removeitem = sc.nextLine();
+                if(removeitem.equals("remove")){
+                    intList.remove(0);
+                    System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
+                    System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, enter 클릭 시 다시 계산)");
+                    String continueInput = sc.nextLine();
+                    if (continueInput.equals("exit")) {
+                        System.out.println("프로그램을 종료합니다.");
+                        break;
+                    }
+                    }
+                else{
+                    System.out.println("삭제할 결과가 없습니다.");
+                }
+            }
         }
     }
 }
