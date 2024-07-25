@@ -1,13 +1,17 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        for(;;) {
+        int[] arr = new int[10]; //배열 생성
+        // int count = 0; 연산 결과 저장된 배열의 마지막 index 저장하는 변수
+
+        Scanner sc = new Scanner(System.in);
+        for(int i = 0; i < arr.length; i++) {
             System.out.println("첫 번째 숫자를 입력하세요: (종료하려면 exit 입력)");
             String input1 = sc.nextLine();
             if (input1.equals("exit")) {
@@ -35,24 +39,25 @@ public class App {
             int result = 0;
             if (operator.equals("+")) {
                 result = num1 + num2;
-                System.out.println("결과: " + result);
             } else if (operator.equals("-")) {
                 result = num1 - num2;
-                System.out.println("결과: " + result);
             } else if (operator.equals("*")) {
                 result = num1 * num2;
-                System.out.println("결과: " + result);
             } else if (operator.equals("/")) {
                 if (num2 == 0) { // 분모에 0이 입력될 수 없는 조건 달아줌
                     System.out.println("분모에 0이 입력될 수 없습니다.");
+                    continue;
                 } else {
                     result = num1 / num2;
-                    System.out.println("결과: " + result);
                 }
             } else{ // 다른 기호를 입력하였을 경우
                 System.out.println("모르는 기호입니다.");
-
+                continue; // 다른 기호를 입력한 경우 배열에 저장하지 않고 넘어감
             }
+            System.out.println("결과: " + result);
+            arr[i] = result;
+
+            System.out.println(Arrays.toString(arr));
         }
     }
 }
