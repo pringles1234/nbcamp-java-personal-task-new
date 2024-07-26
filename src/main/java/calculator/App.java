@@ -13,29 +13,16 @@ public class App {
 
         Scanner sc = new Scanner(System.in);
         while(true) { // for문에서 while 문으로 수정 -> 무한루프
-            System.out.println("첫 번째 숫자를 입력하세요: (종료하려면 exit 입력)");
+            System.out.println("첫 번째 숫자를 입력하세요: ");
             String input1 = sc.nextLine();
-            if (input1.equals("exit")) {
-                System.out.println("프로그램을 종료합니다.");
-                break;
-            }
             Integer num1 = Integer.valueOf(input1); // 문자열에서 정수로 형변환
 
-            System.out.println("두 번째 숫자를 입력하세요: (종료하려면 exit 입력) ");
+            System.out.println("두 번째 숫자를 입력하세요: ");
             String input2 = sc.nextLine();
-            if (input2.equals("exit")) {
-                System.out.println("프로그램을 종료합니다.");
-                break;
-            }
             Integer num2 = Integer.valueOf(input2); // 문자열에서 정수로 형변환
 
-            System.out.println("사칙연산 기호를 입력하세요: (종료하려면 exit 입력) ");
-            // charAt(idx) : charAt 메서드는 매개변수로 char 타입으로 반환 하고자하는 문자열의 위치(index)를 받는다.
+            System.out.println("사칙연산 기호를 입력하세요:  ");
             String operator = sc.nextLine();
-            if (operator.equals("exit")) {
-                System.out.println("프로그램을 종료합니다.");
-                break;
-            }
 
             int result = 0;
             if (operator.equals("+")) {
@@ -57,26 +44,34 @@ public class App {
             }
             System.out.println("결과: " + result);
             //arr[i] = result;
-            intList.add(result);
-            System.out.println(intList.toString());
+            intList.add(result); //list에 결과값 추가
+            // System.out.println(intList.toString()); // 리스트 전체 출력해줌
 
-            if (intList.size() >= 10){
-                System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제, enter 클릭 시 다시 계산)");
-                String removeitem = sc.nextLine();
-                if(removeitem.equals("remove")){
-                    intList.remove(0);
-                    System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
-                    System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, enter 클릭 시 다시 계산)");
-                    String continueInput = sc.nextLine();
-                    if (continueInput.equals("exit")) {
-                        System.out.println("프로그램을 종료합니다.");
-                        break;
-                    }
-                    }
-                else{
-                    System.out.println("삭제할 결과가 없습니다.");
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제, enter 클릭 시 다시 계산)");
+            String removeItem = sc.nextLine();
+            if(removeItem.equals("remove")){
+                intList.remove(0); // 첫번째 인덱스 값 삭제해줌
+                System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
+            }
+
+
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+            String inquiryItem = sc.nextLine();
+            if(inquiryItem.equals("inquiry")){
+                System.out.println("저장된 연산 결과 : ");
+                for(int saveResult : intList){
+                    System.out.println(intList.toString());
                 }
             }
+
+            System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, enter 클릭 시 다시 계산)");
+            String continueInput = sc.nextLine();
+            if (continueInput.equals("exit")) {
+                System.out.println("프로그램을 종료합니다.");
+                break;
+            }
+
         }
     }
 }
