@@ -6,10 +6,24 @@ import java.util.ArrayList;
 
 public class Calculator {
 
-    public ArrayList<Integer> resultSave = new ArrayList<Integer>(); //연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
+    private ArrayList<Integer> resultSave = new ArrayList<Integer>(); //연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
 
+    public ArrayList<Integer> getResultSave() {
+        return this.resultSave;
+    } // Getter 메서드 구현
+
+    public void setResultSave(int number) {
+        this.resultSave.add(number);
+    } // Setter 메서드 구현
+
+    public void setResultSave() {
+        this.resultSave.remove(0);
+    } // Setter 메서드 구현
+
+    //사칙연산 결과 반환 메서드
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
+
         if (operator == '+') {
             result = num1 + num2;
         } else if (operator == '-') {
