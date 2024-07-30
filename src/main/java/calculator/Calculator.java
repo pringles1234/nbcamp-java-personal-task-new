@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Calculator {
 
-    ArrayList<Integer> resultSave = new ArrayList<Integer>(); //연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
+    public ArrayList<Integer> resultSave = new ArrayList<Integer>(); //연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
 
     public int calculate(int num1, int num2, char operator) {
         int result = 0;

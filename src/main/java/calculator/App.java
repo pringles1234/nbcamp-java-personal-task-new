@@ -7,9 +7,10 @@ public class App {
 
     public static void main(String[] args) {
 
+        Calculator calculator = new Calculator(); //Calculator 인스턴스 생성
+
         ArrayList<Integer> intList = new ArrayList<Integer>(); //리스트 생성
-        // int[] arr = new int[10]; 배열생성
-        // int count = 0; 연산 결과 저장된 배열의 마지막 index 저장하는 변수 -> 사용안함
+
 
         Scanner sc = new Scanner(System.in);
         while(true) { // for문에서 while 문으로 수정 -> 무한루프
@@ -22,36 +23,19 @@ public class App {
             Integer num2 = Integer.valueOf(input2); // 문자열에서 정수로 형변환
 
             System.out.println("사칙연산 기호를 입력하세요:  ");
-            String operator = sc.nextLine();
+            char operator = sc.nextLine().charAt(0);
 
-            int result = 0;
-            if (operator.equals("+")) {
-                result = num1 + num2;
-            } else if (operator.equals("-")) {
-                result = num1 - num2;
-            } else if (operator.equals("*")) {
-                result = num1 * num2;
-            } else if (operator.equals("/")) {
-                if (num2 == 0) { // 분모에 0이 입력될 수 없는 조건 달아줌
-                    System.out.println("분모에 0이 입력될 수 없습니다.");
-                    continue;
-                } else {
-                    result = num1 / num2;
-                }
-            } else { // 다른 기호를 입력하였을 경우
-                System.out.println("모르는 기호입니다.");
-                continue; // 다른 기호를 입력한 경우 배열에 저장하지 않고 넘어감
-            }
-            System.out.println("결과: " + result);
-            //arr[i] = result;
-            intList.add(result); //list에 결과값 추가
-            // System.out.println(intList.toString()); // 리스트 전체 출력해줌
+            int result = calculator.calculate(num1, num2, operator);
+
+            System.out.println("결과 : " + result);
+
+            calculator.resultSave.add(result); //리스트에 결과 추가
 
 
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제, enter 클릭 시 다시 계산)");
             String removeItem = sc.nextLine();
             if(removeItem.equals("remove")){
-                intList.remove(0); // 첫번째 인덱스 값 삭제해줌
+                calculator.resultSave.remove(0); // 첫번째 인덱스 값 삭제해줌
                 System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
             }
 
@@ -60,9 +44,12 @@ public class App {
             String inquiryItem = sc.nextLine();
             if(inquiryItem.equals("inquiry")){
                 System.out.println("저장된 연산 결과 : ");
-                for(int saveResult : intList){
-                    System.out.println(intList.toString());
+                for(int element : calculator.resultSave){
+                    System.out.println("[ " + element + " ]");
                 }
+//                for(int saveResult : intList){
+//                    System.out.println(intList.toString());
+//                }
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, enter 클릭 시 다시 계산)");
