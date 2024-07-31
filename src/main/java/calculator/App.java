@@ -22,7 +22,7 @@ public class App {
             String input2 = sc.nextLine();
             Integer num2 = Integer.valueOf(input2); // 문자열에서 정수로 형변환
 
-            System.out.println("사칙연산 기호를 입력하세요:  ");
+            System.out.println("사칙연산 기호를 입력하세요: ");
             char operator = sc.nextLine().charAt(0);
 
             int result = calculator.calculate(num1, num2, operator); //사칙연산 메서드
@@ -35,7 +35,7 @@ public class App {
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제, enter 클릭 시 다시 계산)");
             String removeItem = sc.nextLine();
             if(removeItem.equals("remove")){
-                calculator.setResultSave(); // 첫번째 인덱스 값 삭제해줌
+                calculator.removeResult(); // 첫번째 인덱스 값 삭제해줌
                 System.out.println("가장 먼저 저장된 연산 결과가 삭제되었습니다.");
             }
 

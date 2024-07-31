@@ -8,17 +8,20 @@ public class Calculator {
 
     private ArrayList<Integer> resultSave = new ArrayList<Integer>(); //연산 결과를 저장하는 컬렉션 타입 필드 선언 및 생성
 
+    // Getter 메서드 구현
     public ArrayList<Integer> getResultSave() {
         return this.resultSave;
-    } // Getter 메서드 구현
+    }
 
+    // Setter 메서드 구현
     public void setResultSave(int number) {
         this.resultSave.add(number);
-    } // Setter 메서드 구현
+    }
 
-    public void setResultSave() {
+    // 가장 먼저 저장된 데이터 삭제 메서드
+    public void removeResult(){
         this.resultSave.remove(0);
-    } // Setter 메서드 구현
+    }
 
     //사칙연산 결과 반환 메서드
     public int calculate(int num1, int num2, char operator) {
