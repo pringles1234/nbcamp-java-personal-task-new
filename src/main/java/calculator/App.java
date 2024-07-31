@@ -44,9 +44,7 @@ public class App {
             String inquiryItem = sc.nextLine();
             if(inquiryItem.equals("inquiry")){
                 System.out.println("저장된 연산 결과 : ");
-                for(int element : calculator.getResultSave()){
-                    System.out.println("[ " + element + " ]");
-                }
+                calculator.inquiryResults();
             }
 
             System.out.println("더 계산하시겠습니까? (exit 입력 시 종료, enter 클릭 시 다시 계산)");

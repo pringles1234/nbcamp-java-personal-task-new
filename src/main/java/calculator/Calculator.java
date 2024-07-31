@@ -23,6 +23,13 @@ public class Calculator {
         this.resultSave.remove(0);
     }
 
+    // 연산 결과 조회 메서드
+    public void inquiryResults(){
+        for(int element : resultSave){
+            System.out.println("[ " + element + " ]");
+        }
+    }
+
     //사칙연산 결과 반환 메서드
     public int calculate(int num1, int num2, char operator) {
         int result = 0;
